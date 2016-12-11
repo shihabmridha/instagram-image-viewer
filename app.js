@@ -62,6 +62,8 @@ app.post('/', function (req, res) {
         }else{
             res.render('index',{
                 status : response.statusCode,
+                display: 'none',
+                src: ''
             });
         }
     });
@@ -70,6 +72,7 @@ app.post('/', function (req, res) {
 /**
  * Setup listener port
  */
-app.listen(3000,function () {
-    console.log("App is listening to port 3000 !");
+app.set('port', (process.env.PORT || 3000));
+app.listen(app.get('port'),function () {
+    console.log('Ppp is running on port', app.get('port'));
 });
