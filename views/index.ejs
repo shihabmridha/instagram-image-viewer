@@ -2,10 +2,7 @@
 
 <div class="jumbotron">
     <div class="container web-title">
-        <h1>Instagram <br/>profile picture viewer !</h1>
-        <p>
-            Super Easy
-        </p>
+        <h1>Instagram <br/>image viewer !</h1>
     </div>
 </div>
 
@@ -14,8 +11,8 @@
         <div class="row">
             <div class="col-md-12">
 
-                <% if(status != 200){  %>
-                <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                <!-- 404 ERROR -->
+                <div class="the-alert alert alert-danger alert-dismissible fade in" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -25,18 +22,31 @@
                         It seems like you have entered a wrong username. Please check it for us to work with !
                     </p>
                 </div>
-                <% }%>
 
-                <form class="input-group input-group-lg" id="the-form" method="post" action="/">
+                <!-- Server Communication Error-->
+                <div class="the-server-alert alert alert-danger alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+
+                    <h4> Oh snap! Server error! </h4>
+                    <p>
+                        It seems like we are having issues communicating with server. Please try again!
+                    </p>
+                </div>
+
+                <form class="input-group input-group-lg" id="the-form" method="post">
                     <input type="text" class="form-control" id="username" name="username"  placeholder="Username" autocomplete="off" required>
                     <div class="input-group-btn">
-                        <input type="submit" name="submit" class="btn btn-primary" value="View">
+                        <input type="submit" name="submit" class="btn btn-lg btn-primary" value="View">
                     </div>
                 </form>
 
-                <div style="margin: 20px 0; display: <%= display %> ">
+                <div class="loader">Loading...</div>
+
+                <div class="the-image">
                     <a class="fancybox" rel="group" href="">
-                        <img class="img-responsive img-thumbnail" id="the-image" src="<%= src %>" alt="Instagram profile picture viewer.">
+                        <img class="img-responsive img-thumbnail" src="" alt="Instagram profile picture viewer.">
                     </a>
                 </div>
 

@@ -29,15 +29,12 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname,'public')));
 
 app.get('/', function (req, res) {
-    res.render('index',{
-        status : 200,
-        display: 'none',
-        src: ''
-    });
+    res.render('index');
 });
 
 app.post('/', function (req, res) {
     var username = req.body.username;
+
     request('https://www.instagram.com/' + username, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             var indexOf = body.indexOf("profile_pic_url");
@@ -53,17 +50,15 @@ app.post('/', function (req, res) {
             var temp = url.split("/");
             url = temp[0] + "//" + temp[2] + "/" + temp[3] + "/" + temp[5];
 
-            res.render('index',{
-                status : 200,
-                display: 'block',
-                src: url
+            res.contentType('json');
+            res.send({
+                status: response.statusCode,
+                url: url
             });
 
         }else{
-            res.render('index',{
-                status : response.statusCode,
-                display: 'none',
-                src: ''
+            res.send({
+                status: response.statusCode
             });
         }
     });
@@ -74,5 +69,5 @@ app.post('/', function (req, res) {
  */
 app.set('port', (process.env.PORT || 3000));
 app.listen(app.get('port'),function () {
-    console.log('Ppp is running on port', app.get('port'));
+    console.log('App is running on port', app.get('port'));
 });
