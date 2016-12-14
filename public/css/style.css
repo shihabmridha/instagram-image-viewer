@@ -36,6 +36,21 @@ body {
     margin: 20px 0;
 }
 
+.nav-link a{
+    color: #000000;
+    text-decoration: none;
+    padding-top: 30px;
+    display: block;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.nav-link a:hover{
+    color: #5e5e5e;
+    font-style: italic;
+    font-weight: 600;
+}
+
 @media (min-width: 1200px){
 	.container {
     	width: 40%;

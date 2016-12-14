@@ -2,8 +2,8 @@
 
 <div class="jumbotron">
     <div class="container web-title nav-link">
-        <h1>Instagram <br/>profile picture viewer !</h1>
-        <a href="/post-image">View Post Image</a>
+        <h1>Instagram <br/>post image viewer !</h1>
+        <a href="https://instagram-dp-view.herokuapp.com">View Profile Photo</a>
     </div>
 </div>
 
@@ -20,7 +20,7 @@
 
                     <h4> Oh snap! You got an error! </h4>
                     <p>
-                        It seems like you have entered a wrong username. Please check it for us to work with !
+                        It seems like you have entered a wrong link or ID. Please check it for us to work with !
                     </p>
                 </div>
 
@@ -36,8 +36,8 @@
                     </p>
                 </div>
 
-                <form class="input-group input-group-lg" id="the-form" method="post">
-                    <input type="text" class="form-control" id="username" name="username"  placeholder="Username" autocomplete="off" required>
+                <form class="input-group input-group-lg" id="the-single-form" method="post">
+                    <input type="text" class="form-control" id="post-url" name="post-url"  placeholder="Post url or post ID" autocomplete="off" required>
                     <div class="input-group-btn">
                         <input type="submit" name="submit" class="btn btn-lg btn-primary" value="View">
                     </div>
@@ -55,5 +55,6 @@
         </div>
     </div>
 </section>
+
 
 <% include footer.ejs %>

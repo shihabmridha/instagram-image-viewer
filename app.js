@@ -5,11 +5,15 @@
 
 var express = require('express'),
     bodyParser = require('body-parser'),
-    path = require('path'),
-    request = require('request');
+    path = require('path');
 
 var app = express();
 
+/**
+ * Routes;
+ */
+var profile = require('./routes/index');
+var postImg = require('./routes/postimage');
 
 /**
  * View Engine
@@ -28,41 +32,11 @@ app.use(bodyParser.urlencoded({extended:false}));
  */
 app.use(express.static(path.join(__dirname,'public')));
 
-app.get('/', function (req, res) {
-    res.render('index');
-});
-
-app.post('/', function (req, res) {
-    var username = req.body.username;
-
-    request('https://www.instagram.com/' + username, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var indexOf = body.indexOf("profile_pic_url");
-            var url = '';
-            for(var i = indexOf+22; i <= body.length; i++){
-                if(body[i+1] != ',' ){
-                    url += body[i];
-                }else{
-                    break;
-                }
-            }
-
-            var temp = url.split("/");
-            url = temp[0] + "//" + temp[2] + "/" + temp[3] + "/" + temp[5];
-
-            res.contentType('json');
-            res.send({
-                status: response.statusCode,
-                url: url
-            });
-
-        }else{
-            res.send({
-                status: response.statusCode
-            });
-        }
-    });
-});
+/**
+ * Use routes
+ */
+app.use('/',profile);
+app.use('/',postImg);
 
 /**
  * Setup listener port
