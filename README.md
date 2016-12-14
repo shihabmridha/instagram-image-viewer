@@ -1,5 +1,5 @@
-# Instagram Profile Picture Viewer
-Simple web for viewing full size instagram profile picture.
+# Instagram Profile and Post photo Viewer
+Simple web for viewing full size instagram profile and single post picture.
 
 ### DEMO
 
