@@ -3,7 +3,7 @@ Simple web for viewing full size instagram profile and single post picture.
 
 ### DEMO
 
-Deployed on heroku.  [LINK](https://instagram-dp-view.herokuapp.com/)
+Deployed on heroku.  [LINK](https://instagram-image-view.herokuapp.com/)
 
 ### Modules/Plugins/Frameworks
 
