@@ -24,17 +24,17 @@ router.post('/post-image', function (req, res) {
 
     request(postURL, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            var indexOf = body.indexOf("og:image");
+            var indexOf = body.indexOf("display_src");
             var url = '';
-            for(var i = indexOf+19; i <= body.length; i++){
-                if(body[i] != '"' ){
+            for(var i = indexOf+15; i <= body.length; i++){
+                if(body[i] != '?' ){
                     url += body[i];
                 }else{
                     break;
                 }
             }
 
-            //console.log(url);
+            console.log(url);
 
             var temp = url.split("/");
             url = temp[0] + "//" + temp[2] + "/" + temp[3] + "/" + temp[5] + "/" + temp[6] + "/" + temp[7];
