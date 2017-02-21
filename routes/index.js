@@ -18,7 +18,7 @@ router.post('/index', function (req, res) {
     
     request('https://www.instagram.com/' + username, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            var indexOf = body.indexOf("profile_pic_url");
+            var indexOf = body.indexOf("profile_pic_url_hd");
             var url = '';
             for(var i = indexOf+19; i <= body.length; i++){
                 if(body[i+1] != ',' ){
