@@ -27,7 +27,7 @@ router.post('/post-image', function (req, res) {
             var indexOf = body.indexOf("display_src");
             var url = '';
             for(var i = indexOf+15; i <= body.length; i++){
-                if(body[i] != '?' ){
+                if(body[i+1] != ',' ){
                     url += body[i];
                 }else{
                     break;
