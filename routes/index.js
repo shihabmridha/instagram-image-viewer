@@ -20,7 +20,7 @@ router.post('/index', function (req, res) {
         if (!error && response.statusCode == 200) {
             var indexOf = body.indexOf("profile_pic_url");
             var url = '';
-            for(var i = indexOf+22; i <= body.length; i++){
+            for(var i = indexOf+19; i <= body.length; i++){
                 if(body[i+1] != ',' ){
                     url += body[i];
                 }else{
