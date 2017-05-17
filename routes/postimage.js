@@ -24,7 +24,7 @@ router.post('/post-image', function (req, res) {
 
     request(postURL, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            var indexOf = body.indexOf("display_src");
+            var indexOf = body.indexOf("display_url");
             var url = '';
             for(var i = indexOf+15; i <= body.length; i++){
                 if(body[i+1] != ',' ){
