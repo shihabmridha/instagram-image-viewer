@@ -36,9 +36,10 @@ router.post('/post-image', function (req, res) {
 
             console.log(url);
 
-            var temp = url.split("/");
-            url = temp[0] + "//" + temp[2] + "/" + temp[3] + "/" + temp[5] + "/" + temp[6] + "/" + temp[7];
-            console.log(url);
+            //var temp = url.split("/");
+            //url = temp[0] + "//" + temp[2] + "/" + temp[3] + "/" + temp[5] + "/" + temp[6] + "/" + temp[7];
+            //console.log(url);
+            
             res.contentType('json');
             res.send({
                 status: response.statusCode,
