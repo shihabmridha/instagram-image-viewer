@@ -30,7 +30,7 @@ router.post('/index', function (req, res) {
 
             console.log("Profile: " + url);
             var temp = url.split("/");
-            url = temp[0] + "//" + temp[2] + "/" + temp[3] + "/" + temp[5];
+            url = temp[0] + "//" + temp[2] + "/" + temp[5] + "/" + temp[7];
 
             res.contentType('json');
             res.send({
