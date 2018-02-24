@@ -20,7 +20,7 @@ router.post('/index', function (req, res) {
         if (!error && response.statusCode == 200) {
             var indexOf = body.indexOf("profile_pic_url_hd");
             var url = '';
-            for(var i = indexOf+22; i <= body.length; i++){
+            for(var i = indexOf+21; i <= body.length; i++){
                 if(body[i+1] != ',' ){
                     url += body[i];
                 }else{
@@ -30,7 +30,7 @@ router.post('/index', function (req, res) {
 
             console.log("Profile: " + url);
             var temp = url.split("/");
-            url = temp[0] + "//" + temp[2] + "/" + temp[5] + "/" + temp[7];
+            url = temp[0] + "//" + temp[2] + "/" + temp[6] + "/" + temp[7];
 
             res.contentType('json');
             res.send({
