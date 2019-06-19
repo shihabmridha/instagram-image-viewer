@@ -3,10 +3,9 @@
  * on 13-Dec-16.
  */
 
-var express = require('express'),
-    request = require('request');
-var router = express.Router();
-
+const express = require('express');
+const request = require('request');
+const router = express.Router();
 
 router.get('/', function (req, res) {
     res.render('index');
@@ -18,30 +17,18 @@ router.post('/index', function (req, res) {
     
     request('https://www.instagram.com/' + username, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            var indexOf = body.indexOf("profile_pic_url_hd");
-            var url = '';
-            for(var i = indexOf+21; i <= body.length; i++){
-                if(body[i+1] != ',' ){
-                    url += body[i];
-                }else{
-                    break;
-                }
+            const indexOf = body.indexOf("profile_pic_url_hd");
+            const len = body.length;
+            let url = '';
+            for(let i = indexOf + 21; i <= len; i++){
+                if (body[i] === '"') break;
+                url += body[i];
             }
 
-            console.log("Profile: " + url);
-            var temp = url.split("/");
-            url = temp[0] + "//" + temp[2] + "/" + temp[6] + "/" + temp[8];
-
-            res.contentType('json');
-            res.send({
-                status: response.statusCode,
-                url: url
-            });
+            res.send({ status: response.statusCode, url: url });
 
         }else{
-            res.send({
-                status: response.statusCode
-            });
+            res.send({ status: response.statusCode });
         }
     });
 });
